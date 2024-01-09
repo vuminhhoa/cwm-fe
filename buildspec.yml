@@ -5,7 +5,7 @@ phases:
       nodejs: 18.x
     commands:
       # install npm
-      - npm install
+      - npm install --force
       - echo "installing packages..."
   build:
     commands:
