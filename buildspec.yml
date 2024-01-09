@@ -5,12 +5,12 @@ phases:
       nodejs: 18.x
     commands:
       # install npm
-      - npm install --force
+      - yarn
       - echo "installing packages..."
   build:
     commands:
       # run build script
-      - npm run build
+      - yarn build
       - mv appspec.yml ./build
       - mv ./scripts ./build/
 artifacts:
