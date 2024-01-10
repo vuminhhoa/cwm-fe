@@ -6,7 +6,7 @@ const orderApi = {
     const url = 'order/create';
     return axiosClient.post(url, params);
   },
-  detail(id: number): Promise<CommonResponse> {
+  detail(id: any): any {
     const url = `order/detail?id=${id}`;
     return axiosClient.get(url);
   },
