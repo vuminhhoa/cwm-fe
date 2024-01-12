@@ -17,7 +17,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { options } from 'utils/globalFunc.util';
-import numeral from 'numeral';
+// import numeral from 'numeral';
 
 const CreateOrder = () => {
   const [totalProductAmount, setTotalProductAmount] = useState(0);
@@ -107,7 +107,7 @@ const CreateOrder = () => {
   const handleSupplyChange = (index: any, field: any, value: any) => {
     const updatedSupplies = [...supplyData];
 
-    const numericValue = numeral(value).value();
+    const numericValue = value;
 
     updatedSupplies[index][field] = numericValue;
 
@@ -179,7 +179,7 @@ const CreateOrder = () => {
     console.log('handleProductChange đã được kích hoạt:', index, field, value);
     const updatedProducts = [...productData];
 
-    const numericValue = numeral(value).value();
+    const numericValue = value;
     if (field === 'productQuantity' || field === 'productUnitPrice') {
       updatedProducts[index][field] = numericValue;
     } else {
@@ -354,7 +354,7 @@ const CreateOrder = () => {
           footer={() => (
             <div className="flex justify-end ">
               <strong>
-                Tổng cộng: {numeral(totalProductAmount).format('0,0') + 'đ'}
+                {/* Tổng cộng: {numeral(totalProductAmount).format('0,0') + 'đ'} */}
               </strong>
             </div>
           )}
@@ -436,35 +436,35 @@ const CreateOrder = () => {
             dataIndex={'productUnitPrice'}
             key={'productUnitPrice'}
             width={'200px'}
-            render={(value, record: any, index) => {
-              const formattedValue =
-                value !== 0 ? numeral(value).format('0,0') : '';
-              return (
-                <Input
-                  value={formattedValue}
-                  className="w-full"
-                  placeholder="Nhập đơn giá..."
-                  onChange={(e) =>
-                    handleProductChange(
-                      index,
-                      'productUnitPrice',
-                      e.target.value
-                    )
-                  }
-                ></Input>
-              );
-            }}
+            // render={(value, record: any, index) => {
+            //   const formattedValue =
+            //     value !== 0 ? numeral(value).format('0,0') : '';
+            //   return (
+            //     <Input
+            //       value={formattedValue}
+            //       className="w-full"
+            //       placeholder="Nhập đơn giá..."
+            //       onChange={(e) =>
+            //         handleProductChange(
+            //           index,
+            //           'productUnitPrice',
+            //           e.target.value
+            //         )
+            //       }
+            //     ></Input>
+            //   );
+            // }}
           />
           <Column
             title="Tổng giá trị"
             dataIndex="productTotal"
             key="productTotal"
-            render={(value) => (
-              <span>
-                {' '}
-                {value !== 0 ? numeral(value).format('0,0') + 'đ' : ''}
-              </span>
-            )}
+            // render={(value) => (
+            //   <span>
+            //     {' '}
+            //     {value !== 0 ? numeral(value).format('0,0') + 'đ' : ''}
+            //   </span>
+            // )}
           />
         </Table>
       </Row>
@@ -520,7 +520,7 @@ const CreateOrder = () => {
           footer={() => (
             <div className="flex justify-end ">
               <strong>
-                Tổng cộng: {numeral(totalSupplyAmount).format('0,0') + 'đ'}
+                {/* Tổng cộng: {numeral(totalSupplyAmount).format('0,0') + 'đ'} */}
               </strong>
             </div>
           )}
@@ -581,7 +581,7 @@ const CreateOrder = () => {
             key="supplyUnitPrice"
             render={(value) => (
               <span>
-                {value !== 0 ? numeral(value).format('0,0') + 'đ' : ''}
+                {/* {value !== 0 ? numeral(value).format('0,0') + 'đ' : ''} */}
               </span>
             )}
           />
@@ -591,7 +591,7 @@ const CreateOrder = () => {
             key="supplyTotal"
             render={(value) => (
               <span>
-                {value !== 0 ? numeral(value).format('0,0') + 'đ' : ''}
+                {/* {value !== 0 ? numeral(value).format('0,0') + 'đ' : ''} */}
               </span>
             )}
           />
