@@ -15,6 +15,7 @@ import {
   Popconfirm,
   Tooltip,
   Checkbox,
+  PageHeader,
 } from 'antd';
 import useDebounce from 'hooks/useDebounce';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -185,7 +186,8 @@ const OrderList = () => {
       .catch((error) => toast.error(error));
   };
 
-  const search = () => {
+  const search = async () => {
+    await new Promise((resolve) => setTimeout(resolve, 2000));
     setLoading(true);
     orderApi
       .search({
@@ -209,11 +211,19 @@ const OrderList = () => {
   }, [nameSearch, page, limit]);
 
   return (
-    <div>
-      <div className="flex-between-center">
-        <div className="title">DANH SÁCH ĐƠN HÀNG</div>
-      </div>
-      <Divider />
+    <PageHeader
+      title="Danh sách đơn hàng"
+      extra={[
+        <Button
+          type="primary"
+          onClick={() => {
+            navigate('/orders/create');
+          }}
+        >
+          Tạo mới
+        </Button>,
+      ]}
+    >
       <div className="flex justify-between">
         <div
           className="flex flex-row gap-4 items-center mb-4"
@@ -224,17 +234,6 @@ const OrderList = () => {
             Tùy chọn trường hiển thị
           </div>
         </div>
-        <Button
-          className="button_excel"
-          onClick={() => {
-            navigate('/orders/create');
-          }}
-        >
-          <PlusCircleFilled />
-          <div className="font-medium text-md text-[#5B69E6]">
-            Tạo đơn hàng mới
-          </div>
-        </Button>
       </div>
       {isShowCustomTable && (
         <div className="flex flex-row gap-4">
@@ -260,7 +259,7 @@ const OrderList = () => {
         pagination={false}
         loading={loading}
       />
-    </div>
+    </PageHeader>
   );
 };
 
