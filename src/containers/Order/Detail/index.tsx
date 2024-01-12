@@ -11,9 +11,6 @@ import {
 import { useEffect, useState } from 'react';
 import orderApi from 'api/order.api';
 import { useNavigate, useParams } from 'react-router-dom';
-import numeral from 'numeral';
-
-const { Title } = Typography;
 
 const defaultOrder = {
   order: {
@@ -157,9 +154,7 @@ export default function OrderDetail() {
             {orderData.order.address}
           </Descriptions.Item>
           <Descriptions.Item label="Tổng giá trị đơn hàng">
-            {numeral(orderData.totalSupply + orderData.totalProduct).format(
-              '0,0'
-            ) + 'đ'}
+            {orderData.totalSupply + orderData.totalProduct}
           </Descriptions.Item>
         </Descriptions>
         <Divider />
@@ -171,9 +166,7 @@ export default function OrderDetail() {
           pagination={false}
           footer={() => (
             <div className="flex justify-end ">
-              <strong>
-                Tổng: {numeral(orderData.totalProduct).format('0,0') + 'đ'}
-              </strong>
+              <strong>Tổng: {orderData.totalProduct}</strong>
             </div>
           )}
           className="w-full"
@@ -186,18 +179,13 @@ export default function OrderDetail() {
           <Table.Column
             title="Đơn giá"
             key="unit_price"
-            render={(text, record: any) => (
-              <span>{numeral(record.unit_price).format('0,0') + 'đ'}</span>
-            )}
+            render={(text, record: any) => <span>{record.unit_price}</span>}
           />
           <Table.Column
             title="Thành tiền"
             key="total"
             render={(text, record: any) => (
-              <span>
-                {numeral(record.quantity * record.unit_price).format('0,0') +
-                  'đ'}
-              </span>
+              <span>{record.quantity * record.unit_price}</span>
             )}
           />
         </Table>
@@ -211,9 +199,7 @@ export default function OrderDetail() {
           className="w-full"
           footer={() => (
             <div className="flex justify-end ">
-              <strong>
-                Tổng: {numeral(orderData.totalSupply).format('0,0') + 'đ'}
-              </strong>
+              <strong>Tổng: {orderData.totalSupply}</strong>
             </div>
           )}
         >
@@ -241,20 +227,14 @@ export default function OrderDetail() {
             title="Đơn giá"
             key="supplyUnitPrice"
             render={(text, record: any) => (
-              <span>
-                {numeral(record.Supply?.unit_price).format('0,0') + 'đ'}
-              </span>
+              <span>{record.Supply?.unit_price}</span>
             )}
           />
           <Table.Column
             title="Thành tiền"
             key="total"
             render={(text, record: any) => (
-              <span>
-                {numeral(record.quantity * record.Supply?.unit_price).format(
-                  '0,0'
-                ) + 'đ'}
-              </span>
+              <span>{record.quantity * record.Supply?.unit_price}</span>
             )}
           />
         </Table>
