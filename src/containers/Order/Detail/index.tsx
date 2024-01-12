@@ -11,7 +11,7 @@ import {
 import { useEffect, useState } from 'react';
 import orderApi from 'api/order.api';
 import { useParams } from 'react-router-dom';
-import numeral from 'numeral';
+// import numeral from 'numeral';
 
 export default function OrderDetail() {
   const params = useParams();
@@ -50,9 +50,9 @@ export default function OrderDetail() {
           <p>
             <strong>
               Tổng giá trị đơn hàng:
-              {numeral(orderData.totalSupply + orderData.totalProduct).format(
+              {/* {numeral(orderData.totalSupply + orderData.totalProduct).format(
                 '0,0'
-              ) + 'đ'}
+              ) + 'đ'} */}
             </strong>
           </p>
           {/* Add other order information as needed */}
@@ -66,7 +66,7 @@ export default function OrderDetail() {
         footer={() => (
           <div className="flex justify-end ">
             <strong>
-              Tổng cộng: {numeral(orderData.totalProduct).format('0,0') + 'đ'}
+              {/* Tổng cộng: {numeral(orderData.totalProduct).format('0,0') + 'đ'} */}
             </strong>
           </div>
         )}
@@ -81,16 +81,16 @@ export default function OrderDetail() {
         <Table.Column
           title="Đơn giá"
           key="unit_price"
-          render={(text, record: any) => (
-            <span>{numeral(record.unit_price).format('0,0') + 'đ'}</span>
-          )}
+          // render={(text, record: any) => (
+          //   <span>{numeral(record.unit_price).format('0,0') + 'đ'}</span>
+          // )}
         />
         <Table.Column
           title="Thành tiền"
           key="total"
           render={(text, record: any) => (
             <span>
-              {numeral(record.quantity * record.unit_price).format('0,0') + 'đ'}
+              {/* {numeral(record.quantity * record.unit_price).format('0,0') + 'đ'} */}
             </span>
           )}
         />
@@ -106,7 +106,7 @@ export default function OrderDetail() {
         footer={() => (
           <div className="flex justify-end ">
             <strong>
-              Tổng cộng: {numeral(orderData.totalSupply).format('0,0') + 'đ'}
+              {/* Tổng cộng: {numeral(orderData.totalSupply).format('0,0') + 'đ'} */}
             </strong>
           </div>
         )}
@@ -138,7 +138,7 @@ export default function OrderDetail() {
           key="supplyUnitPrice"
           render={(text, record: any) => (
             <span>
-              {numeral(record.Supply?.unit_price).format('0,0') + 'đ'}
+              {/* {numeral(record.Supply?.unit_price).format('0,0') + 'đ'} */}
             </span>
           )}
         />
@@ -147,9 +147,9 @@ export default function OrderDetail() {
           key="total"
           render={(text, record: any) => (
             <span>
-              {numeral(record.quantity * record.Supply?.unit_price).format(
+              {/* {numeral(record.quantity * record.Supply?.unit_price).format(
                 '0,0'
-              ) + 'đ'}
+              ) + 'đ'} */}
             </span>
           )}
         />

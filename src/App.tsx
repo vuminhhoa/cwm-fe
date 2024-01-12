@@ -56,7 +56,7 @@ const App = () => {
         <Routes>
           <Route
             path="/"
-            element={<PrivateRoute>{/* <Dashboard /> */}</PrivateRoute>}
+            element={<PrivateRoute>{/* <Dashboard /> */ <></>}</PrivateRoute>}
           />
           {/* Carpenter Routes */}
           <Route
