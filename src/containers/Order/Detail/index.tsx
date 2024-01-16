@@ -11,6 +11,7 @@ import {
 import { useEffect, useState } from 'react';
 import orderApi from 'api/order.api';
 import { useNavigate, useParams } from 'react-router-dom';
+import { formatCurrency } from 'utils/globalFunc.util';
 
 const defaultOrder = {
   order: {

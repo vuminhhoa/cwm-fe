@@ -16,7 +16,7 @@ import supplyApi from 'api/supply.api';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { options } from 'utils/globalFunc.util';
+import { options, formatCurrency } from 'utils/globalFunc.util';
 
 const CreateOrder = () => {
   const [totalProductAmount, setTotalProductAmount] = useState(0);
